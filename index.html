@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UIIC Fire Insurance Premium Calculator - Calculate fire insurance premiums for residential, commercial, and industrial properties">
+    <meta name="theme-color" content="#2563eb">
+    
+    <title>UIIC Fire Premium Calculator</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <span class="logo">🔥</span>
+                    UIIC Fire Premium Calculator
+                </h1>
+                <p class="subtitle">Calculate fire insurance premiums for your property</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <form id="premiumForm" class="premium-form">
+                <!-- Property Information Section -->
+                <section class="form-section">
+                    <h2>Property Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="propertyType">Property Type *</label>
+                        <select id="propertyType" name="propertyType" required>
+                            <option value="">Select Property Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sumInsured">Sum Insured (₹) *</label>
+                        <input type="number" id="sumInsured" name="sumInsured" min="1000" max="100000000" step="1000" required>
+                        <small class="help-text">Minimum: ₹1,000 | Maximum: ₹10,00,00,000</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location/State *</label>
+                        <select id="location" name="location" required>
+                            <option value="">Select State</option>
+                            <option value="andhra-pradesh">Andhra Pradesh</option>
+                            <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal-pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya-pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar-pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west-bengal">West Bengal</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="chennai">Chennai</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="constructionType">Construction Type *</label>
+                        <select id="constructionType" name="constructionType" required>
+                            <option value="">Select Construction Type</option>
+                            <option value="pucca">Pucca (RCC/Brick/Stone)</option>
+                            <option value="semi-pucca">Semi-Pucca (Mixed)</option>
+                            <option value="kutcha">Kutcha (Wood/Thatch)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="propertyAge">Property Age (Years)</label>
+                        <input type="number" id="propertyAge" name="propertyAge" min="0" max="100" value="0">
+                    </div>
+                </section>
+
+                <!-- Risk Assessment Section -->
+                <section class="form-section">
+                    <h2>Risk Assessment</h2>
+                    
+                    <div class="form-group">
+                        <label for="occupancyType">Occupancy Type *</label>
+                        <select id="occupancyType" name="occupancyType" required>
+                            <option value="">Select Occupancy Type</option>
+                            <option value="own-residence">Own Residence</option>
+                            <option value="rented-residence">Rented Residence</option>
+                            <option value="office">Office</option>
+                            <option value="shop">Shop/Retail</option>
+                            <option value="warehouse">Warehouse</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="educational">Educational Institution</option>
+                            <option value="healthcare">Healthcare Facility</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <h3>Fire Safety Measures</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="fireExtinguisher" name="fireSafety" value="fire-extinguisher">
+                            <span class="checkmark"></span>
+                            Fire Extinguisher Available
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="smokeDetector" name="fireSafety" value="smoke-detector">
+                            <span class="checkmark"></span>
+                            Smoke Detector Installed
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="sprinklerSystem" name="fireSafety" value="sprinkler-system">
+                            <span class="checkmark"></span>
+                            Sprinkler System
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="fireAlarm" name="fireSafety" value="fire-alarm">
+                            <span class="checkmark"></span>
+                            Fire Alarm System
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <h3>Security Systems</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="securityGuard" name="security" value="security-guard">
+                            <span class="checkmark"></span>
+                            24/7 Security Guard
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="cctvSurveillance" name="security" value="cctv">
+                            <span class="checkmark"></span>
+                            CCTV Surveillance
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="burglaryAlarm" name="security" value="burglar-alarm">
+                            <span class="checkmark"></span>
+                            Burglar Alarm System
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Calculate Premium</button>
+                    <button type="button" id="resetForm" class="btn btn-secondary">Reset Form</button>
+                </div>
+            </form>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <h2>Premium Calculation Results</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Property Details</h3>
+                        <div id="propertyDetails" class="details-content"></div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Premium Breakdown</h3>
+                        <div id="premiumBreakdown" class="breakdown-content"></div>
+                    </div>
+                    
+                    <div class="result-card total-premium">
+                        <h3>Total Premium</h3>
+                        <div id="totalPremium" class="total-amount"></div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button type="button" id="saveCalculation" class="btn btn-success">Save Calculation</button>
+                    <button type="button" id="printQuote" class="btn btn-info">Print Quote</button>
+                    <button type="button" id="newCalculation" class="btn btn-secondary">New Calculation</button>
+                </div>
+            </section>
+
+            <!-- Saved Calculations Section -->
+            <section id="savedCalculations" class="saved-section">
+                <h2>Saved Calculations</h2>
+                <div id="savedList" class="saved-list"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 UIIC Fire Premium Calculator. All rights reserved.</p>
+            <p><small>For insurance purposes only. Actual premium may vary based on underwriting guidelines.</small></p>
+        </footer>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Calculating premium...</p>
+    </div>
+
+    <!-- PWA Install Prompt -->
+    <div id="installPrompt" class="install-prompt" style="display: none;">
+        <div class="install-content">
+            <h3>Install UIIC Fire Calculator</h3>
+            <p>Install this app on your device for easy access and offline use.</p>
+            <div class="install-actions">
+                <button id="installApp" class="btn btn-primary">Install</button>
+                <button id="dismissInstall" class="btn btn-secondary">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
